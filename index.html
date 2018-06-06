@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Countdown Timer</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+  
+  @import url("https://fonts.googleapis.com/css?family=Hi+Melody:400,700|Montserrat:900");
+html {
+  display: grid;
+  min-height: 100%;
+}
+
+body {
+  display: grid;
+  background: #183059;
+}
+
+.container {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  width: 650px;
+  height: 480px;
+}
+
+h1 {
+  font-family: "Hi Melody", sans-serif;
+  text-align: center;
+  margin-top: 1em;
+  font-size: 3em;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #F6F4F3;
+}
+
+#timer {
+  color: #F6F4F3;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Hi Melody", sans-serif;
+  font-size: 1em;
+  letter-spacing: 5px;
+  margin-top: 25%;
+}
+
+.days, .hours, .minutes, .seconds {
+  display: inline-block;
+  padding: 20px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.days {
+  background: #EF2F3C;
+}
+
+.hours {
+  background: #F6F4F3;
+  color: #183059;
+}
+
+.minutes {
+  background: #276FBF;
+}
+
+.seconds {
+  background: #F0A202;
+}
+
+.numbers {
+  font-family: "Montserrat", sans-serif;
+  color: #183059;
+  font-size: 5em;
+}
+
+.white {
+  position: absolute;
+  background: #F6F4F3;
+  height: 85px;
+  width: 75px;
+  left: 30%;
+  top: 5%;
+  animation: balloon1 5s ease-in-out infinite;
+}
+.white .triangle {
+  border-bottom: 14px solid #F6F4F3;
+}
+.white .string {
+  background: #F6F4F3;
+  border: 1px solid #F6F4F3;
+}
+
+.red {
+  position: absolute;
+  background: #EF2F3C;
+  left: 16%;
+  top: 9%;
+  height: 65px;
+  width: 70px;
+  animation: balloon2 5s ease-in-out infinite;
+}
+.red .triangle {
+  border-bottom: 14px solid #EF2F3C;
+}
+.red .string {
+  background: #EF2F3C;
+  border: 1px solid #EF2F3C;
+}
+
+.blue {
+  position: absolute;
+  background: #276FBF;
+  height: 80px;
+  width: 80px;
+  left: 60%;
+  top: 5%;
+  animation: balloon3 5s ease-in-out infinite;
+}
+.blue .triangle {
+  border-bottom: 14px solid #276FBF;
+}
+.blue .string {
+  background: #276FBF;
+  border: 1px solid #276FBF;
+}
+
+.balloon {
+  border: 1px solid #000;
+  border-radius: 50% 50% 50% 50%/ 40% 40% 60% 60%;
+  z-index: 2;
+}
+.balloon.yellow {
+  position: absolute;
+  top: 10%;
+  width: 80px;
+  height: 80px;
+  z-index: -1;
+  background: #F0A202;
+  left: 80%;
+  animation: balloon4 5s ease-in-out infinite;
+}
+.balloon.yellow .triangle {
+  border-bottom: 14px solid #F0A202;
+}
+.balloon.yellow .string {
+  background: #276FBF;
+  border: 1px solid #F0A202;
+}
+
+.eye {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 40%;
+  left: 22%;
+  background: #000;
+  border-radius: 50%;
+}
+.eye:after {
+  content: '';
+  left: 35px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+}
+
+.mouth {
+  position: absolute;
+  top: 45%;
+  left: 43%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.happy {
+  border: 2px solid;
+  border-color: transparent #000 #000 transparent;
+  transform: rotate(45deg);
+}
+
+.triangle {
+  position: absolute;
+  left: 40%;
+  bottom: -10%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.string {
+  position: absolute;
+  height: 100px;
+  width: 1px;
+  left: 48%;
+  top: 100%;
+  z-index: -1;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  background: #F6F4F3;
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.star-red {
+  width: 30px;
+  height: 30px;
+  margin-left: 51px;
+  margin-top: -5px;
+  background: #EF2F3C;
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-transform: uppercase;
+  padding: 10px;
+  font-family: "Hi Melody", sans-serif;
+  font-size: 0.7em;
+}
+footer p {
+  letter-spacing: 3px;
+  color: #EF2F3C;
+}
+footer a {
+  color: #F6F4F3;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #276FBF;
+}
+
+@keyframes balloon1 {
+  0%,100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(8deg);
+  }
+}
+@keyframes balloon2 {
+  0%,100% {
+    transform: translateY(0) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(-8deg);
+  }
+}
+@keyframes balloon3 {
+  0%,100% {
+    transform: translate(0, -10px) rotate(6eg);
+  }
+  50% {
+    transform: translate(-20px, 30px) rotate(-8deg);
+  }
+}
+@keyframes balloon4 {
+  0%,100% {
+    transform: translate(10px, -10px) rotate(-8eg);
+  }
+  50% {
+    transform: translate(-15px, 10px) rotate(10deg);
+  }
+}
+
+</style>
+  
+</head>
+
+<body>
+
+  <div class="container">
+  <div class="balloon white">
+    <div class="star-red"></div>
+  <div class="face">
+    <div class="eye"></div>
+    <div class="mouth happy"></div>
+  </div>
+  <div class="triangle"></div>
+  <div class="string"></div>
+</div>
+
+<div class="balloon red">
+  <div class="star"></div>
+  <div class="face">
+    <div class="eye"></div>
+    <div class="mouth happy"></div>
+  </div>
+  <div class="triangle"></div>
+  <div class="string"></div>
+</div>
+
+<div class="balloon blue">
+  <div class="star"></div>
+  <div class="face">
+    <div class="eye"></div>
+    <div class="mouth happy"></div>
+  </div>
+  <div class="triangle"></div>
+  <div class="string"></div>
+</div> 
+  
+  
+  <div class="balloon yellow">
+  <div class="star"></div>
+  <div class="face">
+    <div class="eye"></div>
+    <div class="mouth happy"></div>
+  </div>
+  <div class="triangle"></div>
+  <div class="string"></div>
+</div> 
+  
+  <div id="timer"></div>
+  <h1>til to Tu's Birthday</h1>
+</div>
+  
+  
+
+    <script>
+      const year = new Date().getFullYear();
+const fourthOfJuly = new Date(year, 6, 4).getTime();
+
+// countdown
+let timer = setInterval(function() {
+
+  // get today's date
+  const today = new Date().getTime();
+
+  // get the difference
+  const diff = fourthOfJuly - today;
+
+  // math
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // display
+  document.getElementById("timer").innerHTML =
+    "<div class=\"days\"> \
+  <div class=\"numbers\">" + days + "</div>days</div> \
+<div class=\"hours\"> \
+  <div class=\"numbers\">" + hours + "</div>hours</div> \
+<div class=\"minutes\"> \
+  <div class=\"numbers\">" + minutes + "</div>minutes</div> \
+<div class=\"seconds\"> \
+  <div class=\"numbers\">" + seconds + "</div>seconds</div> \
+</div>";
+
+}, 1000);
+    </script>
+
+
+
+
+</body>
+
+</html>
